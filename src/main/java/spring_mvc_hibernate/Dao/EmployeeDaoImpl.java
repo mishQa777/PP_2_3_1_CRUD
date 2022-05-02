@@ -24,7 +24,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public void saveEmployee(Employee employee) {
 
-        entityManager.createQuery("INSERT INTO Employee(firstName, lastName, salary)");
+        entityManager.createQuery("INSERT INTO Employee(name, surname, department, salary)");
     }
 
     @Override
@@ -34,8 +34,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public void deleteEmployee(int id) {
-        entityManager.createQuery("delete from Employee where id =:employeeId")
-                .setParameter("employeeId", id).executeUpdate();
+        entityManager.createQuery("delete from Employee where id =:empId")
+                .setParameter("empId", id).executeUpdate();
 
     }
 }

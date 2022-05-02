@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html xmlns:c="http://java.sun.com/xml/ns/javaee">
+<html xmlns:c="http://xmlns.jcp.org/xml/ns/javaee">
 <body>
 <h2>All Employees</h2>
 <br>
@@ -14,29 +13,42 @@
         <td>Operations</td>
     </tr>
 
-    <c:forEach var="emp" items="${allEmps}">
-        <c:url var="updateButton" value="/updateInfo">
-            <c:param name="empId" value="${emp.id}"/>
-        </c:url>
-        <c:url var="deleteButton" value="/deleteEmployee">
-            <c:param name="empId" value="${emp.id}"/>
-        </c:url>
 
+        <th:block th:each="employee : ${allEmployee}">
         <tr>
-            <td>${emp.name}</td>
-            <td>${emp.surname}</td>
-            <td>${emp.department}</td>
-            <td>${emp.salary}</td>
-            <td>
-                <input type="button" value="Update" onclick="window.location.href = '${updateButton}'"/>
-                <input type="button" value="Delete" onclick="window.location.href = '${deleteButton}'"/>
-            </td>
-        </tr>
-    </c:forEach>
+            <td><th:block th:text="${employee.getName()}"></th:block></td>
+            <td><th:block th:text="${employee.getSurname()}"></th:block></td>
+            <td><th:block th:text="${employee.getDepartment()}"></th:block></td>
+            <td><th:block th:text="${employee.getSalary()}"></th:block></td>
+            <td><th:block><a th:href="@{deleteEmployee(empId=${employee.getId()})}">Удалить</a></th:block></td>
+            <td><th:block><a th:href="@{updateInfo(empId=${employee.getId()})}">Изменить</a></th:block></td>
 
+        </tr>
+        </th:block>
 </table>
 <br>
 
-<input type="button" value="Add" onclick="window.location.href = 'addNewEmployee' "/>
+<h2>Добавить пользователя</h2>
+<form action="#" th:action="@{/employeeForAdd}" th:object="${employee}">
+    <table border="1">
+        <tr>
+            <th>Имя:</th>
+            <th><input type="text" th:field="*{name}"/></th>
+        </tr>
+        <tr>
+            <th>Фамилия:</th>
+            <th><input type="text" th:field="*{surname}"/></th>
+        </tr>
+        <tr>
+            <th>Емаил:</th>
+            <th><input type="text" th:field="*{department}" /></th>
+        </tr>
+        <tr>
+            <th>Возвраст:</th>
+            <th><input type="text" th:field="*{salary}" /></th>
+        </tr>
+    </table>
+    <p><input type="submit" value="ОК" /></p>
+</form>
 </body>
 </html>

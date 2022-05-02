@@ -20,29 +20,27 @@ public class MyController {
     @RequestMapping(value = "/")
     public String showAllEmployees(Model model) {
         List<Employee> allEmployees = employeeService.getAllEmployees();
-        model.addAttribute("allEmps", allEmployees);
+        model.addAttribute("allEmployee", allEmployees);
         return "all-employees";
     }
 
     @RequestMapping(value = "/addNewEmployee")
     public String addNewEmployee(Model model) {
-
         Employee employee = new Employee();
-        model.addAttribute("employee", employee);
+        model.addAttribute("employeeForAdd", employee);
         return "employee-info";
     }
 
     @RequestMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
+    public String saveEmployee(@ModelAttribute("employeeForAdd") Employee employee) {
         employeeService.saveEmployee(employee);
-
         return "redirect:/";
     }
 
     @RequestMapping(value = "/updateInfo")
     public String updateEmployee(@RequestParam("empId") int id, Model model) {
         Employee employee = employeeService.getEmployee(id);
-        model.addAttribute("employeeForAdd", employee);
+        model.addAttribute("employeeUpdate", employee);
         return "employee-info";
     }
     @RequestMapping("/deleteEmployee")
