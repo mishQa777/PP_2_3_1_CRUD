@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-
 public class EmployeeDaoImpl implements EmployeeDao {
 
     @PersistenceContext

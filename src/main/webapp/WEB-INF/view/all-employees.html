@@ -12,8 +12,6 @@
         <th>Salary</th>
         <td>Operations</td>
     </tr>
-
-
         <th:block th:each="employee : ${allEmployee}">
         <tr>
             <td><th:block th:text="${employee.getName()}"></th:block></td>
@@ -22,14 +20,13 @@
             <td><th:block th:text="${employee.getSalary()}"></th:block></td>
             <td><th:block><a th:href="@{deleteEmployee(empId=${employee.getId()})}">Удалить</a></th:block></td>
             <td><th:block><a th:href="@{updateInfo(empId=${employee.getId()})}">Изменить</a></th:block></td>
-
         </tr>
         </th:block>
 </table>
 <br>
 
 <h2>Добавить пользователя</h2>
-<form action="#" th:action="@{/employeeForAdd}" th:object="${employee}">
+<form action="#" th:action="@{employeeForAdd}" th:object="${employee}">
     <table border="1">
         <tr>
             <th>Имя:</th>
