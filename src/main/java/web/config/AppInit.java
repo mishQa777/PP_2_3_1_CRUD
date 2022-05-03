@@ -1,13 +1,14 @@
-package spring_mvc_hibernate.Config;
+package web.config;
+
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-//класс вместо web.xml
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     // Метод, указывающий на класс конфигурации
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] { HibernateConfig.class };
+        return new Class[] { HibernateConfig.class };
     }
 
 
@@ -25,4 +26,5 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
 }

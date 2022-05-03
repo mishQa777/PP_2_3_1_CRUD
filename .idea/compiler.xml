@@ -6,8 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PP_2_3_1_CRUD" />
-        <module name="PP_2_2_3_CRUD" />
+        <module name="2.3.1_spring_mvc_hibernate" />
         <module name="PP_2_2_3_CRUD_mvc_hibernate_aop" />
       </profile>
     </annotationProcessing>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+    <body>
+        <h1>Введите новые данные пользователя</h1>
+        <form action="#" th:action="@{/saveUser}" th:object="${userUp}">
+            <table border="1">
+                <tr>
+                    <th>Id:</th>
+                    <th><input type="text" th:field="*{id}" readonly/></th>
+                </tr>
+                <tr>
+                    <th>Имя:</th>
+                    <th><input type="text" th:field="*{name}"/></th>
+                </tr>
+                <tr>
+                    <th>Фамилия:</th>
+                    <th><input type="text" th:field="*{surname}" /></th>
+                </tr>
+                <tr>
+                    <th>Емаил:</th>
+                    <th><input type="text" th:field="*{mail}" /></th>
+                </tr>
+                <tr>
+                    <th>Возвраст:</th>
+                    <th><input type="text" th:field="*{age}" /></th>
+                </tr>
+            </table>
+            <p><input type="submit" value="ОК" /></p>
+        </form>
+
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+    <body>
+        <h2>Пользователи</h2>
+
+
+            <table border="1">
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Эл. почта</th>
+                    <th>Возвраст</th>
+                </tr>
+                    <th:block th:each="us : ${users}">
+                        <tr>
+                            <td><th:block th:text="${us.getName()}"></th:block></td>
+                            <td><th:block th:text="${us.getSurname()}"></th:block></td>
+                            <td><th:block th:text="${us.getMail()}"></th:block></td>
+                            <td><th:block th:text="${us.getAge()}"></th:block></td>
+                            <td><th:block><a th:href="@{deleteUser(id=${us.getId()})}">Удалить</a></th:block></td>
+                            <td><th:block><a th:href="@{updateUser(id=${us.getId()})}">Изменить</a></th:block></td>
+                        </tr>
+                    </th:block>
+            </table>
+            <br>
+
+        <h2>Добавить пользователя</h2>
+        <form action="#" th:action="@{/addUser}" th:object="${user}">
+        <table border="1">
+            <tr>
+                <th>Имя:</th>
+                <th><input type="text" th:field="*{name}"/></th>
+            </tr>
+            <tr>
+                <th>Фамилия:</th>
+                <th><input type="text" th:field="*{surname}"/></th>
+            </tr>
+            <tr>
+                <th>Емаил:</th>
+                <th><input type="text" th:field="*{mail}" /></th>
+            </tr>
+            <tr>
+                <th>Возвраст:</th>
+                <th><input type="text" th:field="*{age}" /></th>
+            </tr>
+        </table>
+            <p><input type="submit" value="ОК" /></p>
+        </form>
+    </body>
+</html>

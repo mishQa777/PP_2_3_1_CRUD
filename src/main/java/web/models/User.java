@@ -1,10 +1,13 @@
-package spring_mvc_hibernate.entity;
+package web.models;
+
+import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,25 +20,24 @@ public class Employee {
     private String surname;
 
     @Column(name = "department")
-    private String department;
+    private String mail;
 
     @Column(name = "salary")
-    private int salary;
+    private int age;
 
+    public User() {
 
-    public Employee() {
-    }
-
-    public Employee(int id, String name, String surname, String department, int salary) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.department = department;
-        this.salary = salary;
     }
 
     public int getId() {
         return id;
+    }
+
+    public User(String name, String surname, String mail, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.mail = mail;
+        this.age = age;
     }
 
     public void setId(int id) {
@@ -58,30 +60,30 @@ public class Employee {
         this.surname = surname;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getMail() {
+        return mail;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
-    public int getSalary() {
-        return salary;
+    public int getAge() {
+        return age;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", department='" + department + '\'' +
-                ", salary=" + salary +
+                ", mail='" + mail + '\'' +
+                ", age=" + age +
                 '}';
     }
 }
